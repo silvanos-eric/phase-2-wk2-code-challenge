@@ -1,4 +1,8 @@
-const YourBotArmy = ({ armyList }) => {
+const YourBotArmy = ({ armyList, onRelease }) => {
+  const release = (id) => {
+    onRelease(id);
+  };
+
   return (
     <section>
       <h2>Army</h2>
@@ -8,6 +12,7 @@ const YourBotArmy = ({ armyList }) => {
             <td>ID</td>
             <td>Name</td>
             <td>Avatar</td>
+            <td></td>
           </tr>
         </thead>
         <tbody>
@@ -17,6 +22,9 @@ const YourBotArmy = ({ armyList }) => {
               <td>{name}</td>
               <td>
                 <img src={avatar_url} alt="" />
+              </td>
+              <td>
+                <button onClick={() => release(id)}>Release</button>
               </td>
             </tr>
           ))}

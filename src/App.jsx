@@ -24,11 +24,16 @@ function App() {
 
   const addToArmy = (id) => setArmyIdList([...armyIdList, id]);
 
+  const releaseFromArmy = (id) => {
+    const newArmyIdList = armyIdList.filter((armyId) => armyId !== id);
+    setArmyIdList(newArmyIdList);
+  };
+
   return (
     <main>
       <BotCollection collection={botCollectionData} onSelect={updateBotIndex} />
       <BotDetails bot={selectedBot} onAdd={addToArmy} />
-      <YourBotArmy armyList={armyList} />
+      <YourBotArmy armyList={armyList} onRelease={releaseFromArmy} />
     </main>
   );
 }
