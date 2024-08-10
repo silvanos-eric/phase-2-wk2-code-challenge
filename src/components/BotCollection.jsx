@@ -1,3 +1,5 @@
+import { Table, Button } from ".";
+
 const BotCollection = ({ collection, onSelect, onDischarge }) => {
   const showBotDetails = (index) => {
     onSelect(index);
@@ -11,8 +13,8 @@ const BotCollection = ({ collection, onSelect, onDischarge }) => {
   return (
     <section>
       <h2>Collection</h2>
-      <table>
-        <thead>
+      <Table striped bordered hover>
+        <thead className="text-center">
           <tr>
             <th>ID</th>
             <th>Name</th>
@@ -20,28 +22,29 @@ const BotCollection = ({ collection, onSelect, onDischarge }) => {
             <th></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-center">
           {collection.map(({ id, name, avatar_url }, index) => (
             <tr key={id} onClick={() => showBotDetails(index)}>
               <td>{id}</td>
               <td>{name}</td>
               <td>
-                <img src={avatar_url} alt="" />
+                <img className="img" src={avatar_url} alt="" />
               </td>
               <td>
-                <button
+                <Button
+                  variant="danger"
                   onClick={(event) => {
                     event.stopPropagation();
                     discharge(id);
                   }}
                 >
                   X
-                </button>
+                </Button>
               </td>
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
     </section>
   );
 };

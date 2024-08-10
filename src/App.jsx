@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 
-import { BotCollection, BotDetails, YourBotArmy } from "./components";
+import { Row, Col } from "./components";
+
+import {
+  BotCollection,
+  BotDetails,
+  YourBotArmy,
+  Container,
+} from "./components";
 import "./App.css";
 
 function App() {
@@ -37,15 +44,23 @@ function App() {
   };
 
   return (
-    <main>
-      <BotCollection
-        collection={botCollectionData}
-        onSelect={updateBotIndex}
-        onDischarge={dischargeFromService}
-      />
-      <BotDetails bot={selectedBot} onAdd={addToArmy} />
-      <YourBotArmy armyList={armyList} onRelease={releaseFromArmy} />
-    </main>
+    <Container className="p-4">
+      <Row className="gap-5">
+        <Col>
+          <BotCollection
+            collection={botCollectionData}
+            onSelect={updateBotIndex}
+            onDischarge={dischargeFromService}
+          />
+        </Col>
+        <Col className="gap-5">
+          <div className="sticky-top d-flex flex-column gap-5">
+            <BotDetails bot={selectedBot} onAdd={addToArmy} />
+            <YourBotArmy armyList={armyList} onRelease={releaseFromArmy} />
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
