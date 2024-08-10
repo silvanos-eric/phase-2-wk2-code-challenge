@@ -54,7 +54,9 @@ function App() {
           />
         </Col>
         <Col>
-          <BotDetails bot={selectedBot} onAdd={addToArmy} />
+          <div className="sticky-top">
+            <BotDetails bot={selectedBot} onAdd={addToArmy} />
+          </div>
         </Col>
         <Col>
           <YourBotArmy armyList={armyList} onRelease={releaseFromArmy} />
