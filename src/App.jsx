@@ -6,6 +6,7 @@ import "./App.css";
 function App() {
   const [botCollectionData, setBotCollectionData] = useState([]);
   const [selectedBotIndex, setSelectedBotIndex] = useState(0);
+  const [armyIdList, setArmyIdList] = useState([]);
   const selectedBot = botCollectionData[selectedBotIndex];
 
   useEffect(() => {
@@ -17,11 +18,17 @@ function App() {
 
   const updateBotIndex = (index) => setSelectedBotIndex(index);
 
+  const armyList = botCollectionData.filter((bot) =>
+    armyIdList.includes(bot.id)
+  );
+
+  const addToArmy = (id) => setArmyIdList([...armyIdList, id]);
+
   return (
     <main>
       <BotCollection collection={botCollectionData} onSelect={updateBotIndex} />
-      <BotDetails bot={selectedBot} />
-      <YourBotArmy />
+      <BotDetails bot={selectedBot} onAdd={addToArmy} />
+      <YourBotArmy armyList={armyList} />
     </main>
   );
 }

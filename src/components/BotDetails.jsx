@@ -1,4 +1,4 @@
-const BotDetails = ({ bot }) => {
+const BotDetails = ({ bot, onAdd }) => {
   const {
     avatar_url,
     id,
@@ -9,19 +9,35 @@ const BotDetails = ({ bot }) => {
     bot_class,
     catchphrase,
   } = bot || {};
+
+  const enlist = (id) => {
+    onAdd(id);
+  };
+
   return (
-    <div className="bot">
-      <img src={avatar_url} alt="" className="img" />
-      <div className="info">
-        <p>ID: {id}</p>
-        <p>Name: {name}</p>
-        <p>Health: {health}</p>
-        <p>Damage: {damage}</p>
-        <p>Armor: {armor}</p>
-        <p>Bot Class: {bot_class}</p>
-        <p>Cathphrase: {catchphrase}</p>
+    <section>
+      <h2>Bot Details</h2>
+      <div className="bot">
+        <img src={avatar_url} alt="" className="img" />
+        <div className="info">
+          <p>ID: {id}</p>
+          <p>Name: {name}</p>
+          <p>Health: {health}</p>
+          <p>Damage: {damage}</p>
+          <p>Armor: {armor}</p>
+          <p>Bot Class: {bot_class}</p>
+          <p>Cathphrase: {catchphrase}</p>
+          <button
+            onClick={(event) => {
+              event.stopPropagation();
+              enlist(id);
+            }}
+          >
+            Enlist
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
