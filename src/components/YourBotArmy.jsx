@@ -1,3 +1,5 @@
+import { Table, Button } from ".";
+
 const YourBotArmy = ({ armyList, onRelease }) => {
   const release = (id) => {
     onRelease(id);
@@ -6,8 +8,8 @@ const YourBotArmy = ({ armyList, onRelease }) => {
   return (
     <section>
       <h2>Army</h2>
-      <table>
-        <thead>
+      <Table striped bordered hover>
+        <thead className="text-center">
           <tr>
             <td>ID</td>
             <td>Name</td>
@@ -16,20 +18,24 @@ const YourBotArmy = ({ armyList, onRelease }) => {
           </tr>
         </thead>
         <tbody>
-          {armyList.map(({ id, name, avatar_url }) => (
-            <tr key={id}>
-              <td>{id}</td>
-              <td>{name}</td>
-              <td>
-                <img src={avatar_url} alt="" />
-              </td>
-              <td>
-                <button onClick={() => release(id)}>Release</button>
-              </td>
-            </tr>
-          ))}
+          {armyList.length < 1 && (
+            <p className="text-center">No Bot Enlisted.</p>
+          )}
+          {armyList.length > 0 &&
+            armyList.map(({ id, name, avatar_url }) => (
+              <tr key={id}>
+                <td>{id}</td>
+                <td>{name}</td>
+                <td>
+                  <img className="img" src={avatar_url} alt="" />
+                </td>
+                <td>
+                  <Button onClick={() => release(id)}>Release</Button>
+                </td>
+              </tr>
+            ))}
         </tbody>
-      </table>
+      </Table>
     </section>
   );
 };

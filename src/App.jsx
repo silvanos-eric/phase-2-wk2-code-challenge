@@ -45,7 +45,7 @@ function App() {
 
   return (
     <Container className="p-4">
-      <Row className="gap-5">
+      <Row className="gap-2">
         <Col>
           <BotCollection
             collection={botCollectionData}
@@ -53,11 +53,11 @@ function App() {
             onDischarge={dischargeFromService}
           />
         </Col>
-        <Col className="gap-5">
-          <div className="sticky-top d-flex flex-column gap-5">
-            <BotDetails bot={selectedBot} onAdd={addToArmy} />
-            <YourBotArmy armyList={armyList} onRelease={releaseFromArmy} />
-          </div>
+        <Col>
+          <BotDetails bot={selectedBot} onAdd={addToArmy} />
+        </Col>
+        <Col>
+          <YourBotArmy armyList={armyList} onRelease={releaseFromArmy} />
         </Col>
       </Row>
     </Container>

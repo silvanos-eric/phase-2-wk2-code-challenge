@@ -24,12 +24,9 @@ const BotDetails = ({ bot, onAdd }) => {
           <Card.Img variant="top" src={avatar_url} />
           <Card.Body>
             <Card.Title>{name}</Card.Title>
-            <Card.Text>
+            <Card.Text className="pt-2">
               <p>
                 <span className="fw-bold">ID:</span> {id}
-              </p>
-              <p>
-                <span>Name:</span> {name}
               </p>
               <p>
                 <span className="fw-bold">Health:</span> {health}
