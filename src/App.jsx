@@ -1,8 +1,16 @@
 import { useState } from "react";
+
+import { BotCollection, BotDetails, YourBotArmy } from "./components";
 import "./App.css";
 
 function App() {
-  return <p>App</p>;
+  return (
+    <main>
+      <BotCollection />
+      <BotDetails />
+      <YourBotArmy />
+    </main>
+  );
 }
 
 export default App;
