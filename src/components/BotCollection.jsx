@@ -4,6 +4,7 @@ const BotCollection = ({ collection, onSelect, onDischarge }) => {
   };
 
   const discharge = (id) => {
+    fetch(`http://localhost:3000/bots/${id}`, { method: "DELETE" });
     onDischarge(id);
   };
 
