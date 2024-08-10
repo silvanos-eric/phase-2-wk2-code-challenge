@@ -1,6 +1,10 @@
-const BotCollection = ({ collection, onSelect }) => {
+const BotCollection = ({ collection, onSelect, onDischarge }) => {
   const showBotDetails = (index) => {
     onSelect(index);
+  };
+
+  const discharge = (id) => {
+    onDischarge(id);
   };
 
   return (
@@ -12,6 +16,7 @@ const BotCollection = ({ collection, onSelect }) => {
             <th>ID</th>
             <th>Name</th>
             <th>Avatar</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -21,6 +26,16 @@ const BotCollection = ({ collection, onSelect }) => {
               <td>{name}</td>
               <td>
                 <img src={avatar_url} alt="" />
+              </td>
+              <td>
+                <button
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    discharge(id);
+                  }}
+                >
+                  X
+                </button>
               </td>
             </tr>
           ))}

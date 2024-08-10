@@ -29,9 +29,20 @@ function App() {
     setArmyIdList(newArmyIdList);
   };
 
+  const dischargeFromService = (id) => {
+    const newBotCollectionData = botCollectionData.filter(
+      (bot) => bot.id !== id
+    );
+    setBotCollectionData(newBotCollectionData);
+  };
+
   return (
     <main>
-      <BotCollection collection={botCollectionData} onSelect={updateBotIndex} />
+      <BotCollection
+        collection={botCollectionData}
+        onSelect={updateBotIndex}
+        onDischarge={dischargeFromService}
+      />
       <BotDetails bot={selectedBot} onAdd={addToArmy} />
       <YourBotArmy armyList={armyList} onRelease={releaseFromArmy} />
     </main>
