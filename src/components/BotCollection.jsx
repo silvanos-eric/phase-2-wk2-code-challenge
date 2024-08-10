@@ -24,7 +24,11 @@ const BotCollection = ({ collection, onSelect, onDischarge }) => {
         </thead>
         <tbody className="text-center">
           {collection.map(({ id, name, avatar_url }, index) => (
-            <tr key={id} onClick={() => showBotDetails(index)}>
+            <tr
+              style={{ cursor: "pointer" }}
+              key={id}
+              onClick={() => showBotDetails(index)}
+            >
               <td>{id}</td>
               <td>{name}</td>
               <td>

@@ -1,5 +1,5 @@
 // React Bootstrap components
-export { Container, Table, Row, Col, Button } from "react-bootstrap";
+export { Container, Table, Row, Col, Button, Card } from "react-bootstrap";
 
 // Custom components
 export { BotCollection } from "./BotCollection";
