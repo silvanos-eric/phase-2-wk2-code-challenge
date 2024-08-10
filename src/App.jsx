@@ -59,7 +59,11 @@ function App() {
           </div>
         </Col>
         <Col>
-          <YourBotArmy armyList={armyList} onRelease={releaseFromArmy} />
+          <YourBotArmy
+            armyList={armyList}
+            onRelease={releaseFromArmy}
+            onSelect={updateBotIndex}
+          />
         </Col>
       </Row>
     </Container>

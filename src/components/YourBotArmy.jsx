@@ -30,7 +30,14 @@ const YourBotArmy = ({ armyList, onRelease }) => {
                   <img className="img" src={avatar_url} alt="" />
                 </td>
                 <td>
-                  <Button onClick={() => release(id)}>Release</Button>
+                  <Button
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      release(id);
+                    }}
+                  >
+                    Release
+                  </Button>
                 </td>
               </tr>
             ))}
