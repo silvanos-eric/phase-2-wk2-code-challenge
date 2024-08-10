@@ -5,6 +5,8 @@ import "./App.css";
 
 function App() {
   const [botCollectionData, setBotCollectionData] = useState([]);
+  const [selectedBotIndex, setSelectedBotIndex] = useState(0);
+  const selectedBot = botCollectionData[selectedBotIndex];
 
   useEffect(() => {
     fetch("http://localhost:3000/bots")
@@ -13,10 +15,12 @@ function App() {
       .catch(console.error);
   }, []);
 
+  const updateBotIndex = (index) => setSelectedBotIndex(index);
+
   return (
     <main>
-      <BotCollection collection={botCollectionData} />
-      <BotDetails />
+      <BotCollection collection={botCollectionData} onSelect={updateBotIndex} />
+      <BotDetails bot={selectedBot} />
       <YourBotArmy />
     </main>
   );
