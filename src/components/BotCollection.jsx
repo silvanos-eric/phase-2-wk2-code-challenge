@@ -6,7 +6,9 @@ const BotCollection = ({ collection, onSelect, onDischarge }) => {
   };
 
   const discharge = (id) => {
-    fetch(`http://localhost:3000/bots/${id}`, { method: "DELETE" });
+    fetch(`https://json-server-vercel-three-pearl.vercel.app/bots/${id}`, {
+      method: "DELETE",
+    });
     onDischarge(id);
   };
 

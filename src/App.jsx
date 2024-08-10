@@ -14,12 +14,14 @@ function App() {
   const [botCollectionData, setBotCollectionData] = useState([]);
   const [selectedBotIndex, setSelectedBotIndex] = useState(0);
   const [armyIdList, setArmyIdList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const selectedBot = botCollectionData[selectedBotIndex];
 
   useEffect(() => {
-    fetch("http://localhost:3000/bots")
+    fetch("https://json-server-vercel-three-pearl.vercel.app/bots")
       .then((response) => response.json())
       .then(setBotCollectionData)
+      .then(() => setIsLoading(false))
       .catch(console.error);
   }, []);
 
@@ -47,11 +49,14 @@ function App() {
     <Container className="p-4">
       <Row className="gap-2">
         <Col>
-          <BotCollection
-            collection={botCollectionData}
-            onSelect={updateBotIndex}
-            onDischarge={dischargeFromService}
-          />
+          {isLoading && <p>Loading...</p>}
+          {!isLoading && (
+            <BotCollection
+              collection={botCollectionData}
+              onSelect={updateBotIndex}
+              onDischarge={dischargeFromService}
+            />
+          )}
         </Col>
         <Col>
           <div className="sticky-top">
